@@ -5,9 +5,20 @@
 	<title>To-Do lists</title>
 	<body>
 		<h1>Your To-Do list</h1>		
-		<form method="POST">		
+		<form method="POST" action="/">		
 			{% csrf_token  %}	
 			<input name="item_text" type="text" id="id_new_item" placeholder="Enter a to-do item">
 		</form>
+
+		<table id="id_list_table">
+			<thead>
+				<th>Items</th>
+			</thead>
+			{% for item in items %}
+				<tr>
+					<td>{{ forloop.counter }}: {{ item.text }}</td>
+				</tr>	
+			{% endfor %}			
+		</table>
 	</body>
 </html>
