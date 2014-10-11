@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://developers.google.com/web/css/styles.min.css">
+	<title>To-Do lists</title>
+	<body>
+		<h1>{% block header_text %}{% endblock %}</h1>		
+		<form method="POST" action="{% block form_action %}{% endblock %}">		
+			{% csrf_token  %}	
+			<input name="item_text" type="text" id="id_new_item" placeholder="Enter a to-do item">
+		</form>
+		{% block table %}{% endblock %}
+	</body>
+</html>

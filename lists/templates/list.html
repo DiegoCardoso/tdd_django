@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="stylesheet" href="https://developers.google.com/web/css/styles.min.css">
-	<title>To-Do lists</title>
-	<body>
-		<h1>Your To-Do list</h1>		
-		<form method="POST" action="/lists/{{ list.id }}/add_item">		
-			{% csrf_token  %}	
-			<input name="item_text" type="text" id="id_new_item" placeholder="Enter a to-do item">
-		</form>
+{% extends "base.html" %}
 
-		<table id="id_list_table">
+{% block header_text %}
+	Your To-Do list
+{% endblock header_text %}
+
+{% block form_action %}/lists/{{ list.id }}/add_item{% endblock form_action %}
+
+{% block table %}
+	<table id="id_list_table">
 			<thead>
 				<th>Items</th>
 			</thead>
@@ -20,5 +17,4 @@
 				</tr>	
 			{% endfor %}			
 		</table>
-	</body>
-</html>
+{% endblock table %}
